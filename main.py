@@ -18,6 +18,14 @@ def choose_lines_with_word(lines, word):
     return right_lines
 
 
+def write_to_file(lines):
+    with open("result.txt", "w") as file:
+        for line in lines:
+            file.write(line + "\n")
+
+
 file = read_file("test.txt")
 lines = choose_lines_with_word(file, 'Mary')
-print(lines)
+write_to_file(lines)
+file = read_file("result.txt")
+print(file)
