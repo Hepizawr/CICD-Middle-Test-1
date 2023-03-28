@@ -3,19 +3,17 @@ def read_file(file_name):
     with open(file_name) as file:
         for line in file:
             lines.append(line.replace('\n', ''))
-            # _, *name = line.split(' ')
-            # print(name)
     return lines
 
 
 def choose_lines_with_word(lines, word):
-    right_lines = []
+    lines_with_word = []
     for line in lines:
         for word_in_line in line.split(' '):
             if word == word_in_line:
-                right_lines.append(line)
+                lines_with_word.append(line)
                 continue
-    return right_lines
+    return lines_with_word
 
 
 def write_to_file(lines):
@@ -24,8 +22,9 @@ def write_to_file(lines):
             file.write(line + "\n")
 
 
-file = read_file("test.txt")
-lines = choose_lines_with_word(file, 'Mary')
-write_to_file(lines)
-file = read_file("result.txt")
-print(file)
+if __name__ == "__main__":
+    file = read_file("test.txt")
+    lines = choose_lines_with_word(file, 'Mary')
+    write_to_file(lines)
+    file = read_file("result.txt")
+    print(file)
